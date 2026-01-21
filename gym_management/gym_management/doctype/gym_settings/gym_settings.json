@@ -1,0 +1,70 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-01-21 13:52:29.336728",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "default_membership_duration_days",
+  "maximum_lockers",
+  "weekly_summary_enabled",
+  "email_sender"
+ ],
+ "fields": [
+  {
+   "fieldname": "default_membership_duration_days",
+   "fieldtype": "Int",
+   "label": "Default Membership Duration (days)"
+  },
+  {
+   "fieldname": "maximum_lockers",
+   "fieldtype": "Int",
+   "label": "Maximum Lockers"
+  },
+  {
+   "default": "0",
+   "fieldname": "weekly_summary_enabled",
+   "fieldtype": "Check",
+   "label": "Weekly Summary Enabled"
+  },
+  {
+   "fieldname": "email_sender",
+   "fieldtype": "Data",
+   "label": "Email Sender"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-01-21 15:36:23.662907",
+ "modified_by": "Administrator",
+ "module": "Gym Management",
+ "name": "Gym Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "Gym Admin",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}
