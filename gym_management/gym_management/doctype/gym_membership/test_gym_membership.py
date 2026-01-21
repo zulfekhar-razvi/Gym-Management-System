@@ -1,22 +1,34 @@
-# Copyright (c) 2026, Viz Coder and Contributors
-# See license.txt
+import frappe
+import unittest
 
-# import frappe
-from frappe.tests import IntegrationTestCase
+class TestGymMembership(unittest.TestCase):
 
+    def setUp(self):
+        self.member = frappe.get_doc({
+            "doctype": "Gym Member",
+            "member_name": "Test Member"
+        }).insert(ignore_permissions=True)
 
-# On IntegrationTestCase, the doctype test records and all
-# link-field test record dependencies are recursively loaded
-# Use these module variables to add/remove to/from that list
-EXTRA_TEST_RECORD_DEPENDENCIES = []  # eg. ["User"]
-IGNORE_TEST_RECORD_DEPENDENCIES = []  # eg. ["User"]
+    def test_create_membership(self):
+        membership = frappe.get_doc({
+            "doctype": "Gym Membership",
+            "member": self.member.name,
+            "membership_type": "Monthly",
+            "start_date": frappe.utils.today(),
+            "amount": 1000
+        }).insert(ignore_permissions=True)
 
+        self.assertTrue(membership.name)
 
+    def test_submit_membership(self):
+        membership = frappe.get_doc({
+            "doctype": "Gym Membership",
+            "member": self.member.name,
+            "membership_type": "Monthly",
+            "start_date": frappe.utils.today(),
+            "amount": 1000
+        }).insert(ignore_permissions=True)
 
-class IntegrationTestGymMembership(IntegrationTestCase):
-	"""
-	Integration tests for GymMembership.
-	Use this class for testing interactions between multiple components.
-	"""
+        membership.submit()
 
-	pass
+        self.assertEqual(membership.docstatus, 1)
